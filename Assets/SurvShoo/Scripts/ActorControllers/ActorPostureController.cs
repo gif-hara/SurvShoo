@@ -5,7 +5,7 @@ namespace SurvShoo
     /// </summary>
     public sealed class ActorPostureController
     {
-        public void Setuo(Actor actor)
+        public void Setup(Actor actor)
         {
         }
     }
