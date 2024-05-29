@@ -7,5 +7,10 @@ namespace SurvShoo
     /// </summary>
     public sealed class SceneControllerGame : MonoBehaviour
     {
+        async void Start()
+        {
+            await BootSystem.IsReady;
+            Debug.Log("Game Start");
+        }
     }
 }
