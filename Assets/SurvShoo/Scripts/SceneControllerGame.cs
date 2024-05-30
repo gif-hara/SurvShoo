@@ -8,12 +8,16 @@ namespace SurvShoo
     public sealed class SceneControllerGame : MonoBehaviour
     {
         [SerializeField]
+        private GameDesign gameDesign;
+        
+        [SerializeField]
         private Actor playerActorPrefab;
         
         async void Start()
         {
             await BootSystem.IsReady;
             TinyServiceLocator.Resolve<InputController>().InputActions.Enable();
+            TinyServiceLocator.Register(gameDesign);
             var playerActor = Instantiate(playerActorPrefab);
             var gamePlayerController = new GamePlayerController();
             gamePlayerController.Setup(playerActor);
