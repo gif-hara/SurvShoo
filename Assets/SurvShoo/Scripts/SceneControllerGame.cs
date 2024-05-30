@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SurvShoo
 {
@@ -14,16 +13,13 @@ namespace SurvShoo
         [SerializeField]
         private GameInstanceData gameInstanceData;
         
-        [SerializeField]
-        private Actor playerActorPrefab;
-        
         async void Start()
         {
             await BootSystem.IsReady;
             TinyServiceLocator.Resolve<InputController>().InputActions.Enable();
             TinyServiceLocator.Register(gameInstanceData);
             TinyServiceLocator.Register(gameDesignData);
-            var playerActor = Instantiate(playerActorPrefab);
+            var playerActor = Instantiate(gameDesignData.PlayerData.ActorPrefab);
             var gamePlayerController = new GamePlayerController();
             gamePlayerController.Setup(playerActor);
         }

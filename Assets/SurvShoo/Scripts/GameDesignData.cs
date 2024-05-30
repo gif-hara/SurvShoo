@@ -17,6 +17,10 @@ namespace SurvShoo
         public class _PlayerData
         {
             [SerializeField]
+            private Actor actorPrefab;
+            public Actor ActorPrefab => actorPrefab;
+            
+            [SerializeField]
             private MinMaxValue moveSpeed;
 
             [SerializeField]
