@@ -19,3 +19,10 @@ MonoBehaviour:
       Max: 24
     slowModeMoveSpeedRate: 0.5
     moveSpeedLevelMax: 10
+  bulletData:
+    list:
+    - id: Player.0
+      database:
+        list:
+        - id: MoveSpeed
+          data: 120
