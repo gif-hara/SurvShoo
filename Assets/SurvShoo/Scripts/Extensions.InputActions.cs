@@ -31,5 +31,10 @@ namespace SurvShoo
                 h => self.started -= h
             );
         }
+
+        public static bool IsPress(this InputAction self)
+        {
+            return self.ReadValue<float>() >= 0.5f;
+        }
     }
 }
