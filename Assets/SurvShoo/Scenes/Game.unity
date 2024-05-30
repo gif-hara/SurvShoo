@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDesign: {fileID: 11400000, guid: b92d58abd30624998a9ef023df669e23, type: 2}
+  gameInstanceData:
+    playerMoveSpeedLevel: 0
   playerActorPrefab: {fileID: 4853317107756426016, guid: 1bae47b89bee4a94592570ae771efb71, type: 3}
 --- !u!4 &328910171
 Transform:

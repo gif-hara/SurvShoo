@@ -23,6 +23,17 @@ namespace SurvShoo
             [SerializeField]
             private float slowModeMoveSpeedRate;
             public float SlowModeMoveSpeedRate => slowModeMoveSpeedRate;
+            
+            [SerializeField]
+            private int moveSpeedLevelMax;
+            public int MoveSpeedLevelMax => moveSpeedLevelMax;
+            
+            public float GetMoveSpeedRate(int level, bool isSlowMode)
+            {
+                var rate = (float)level / moveSpeedLevelMax;
+                var slowModeRate = isSlowMode ? slowModeMoveSpeedRate : 1.0f;
+                return moveSpeed.Evaluate(rate) * slowModeRate;
+            }
         }
     }
 }
