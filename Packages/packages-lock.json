@@ -1,5 +1,16 @@
 {
   "dependencies": {
+    "com.annulusgames.lit-motion": {
+      "version": "https://github.com/AnnulusGames/LitMotion.git?path=src/LitMotion/Assets/LitMotion",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.burst": "1.6.0",
+        "com.unity.collections": "1.5.1",
+        "com.unity.mathematics": "1.0.1"
+      },
+      "hash": "b6002a25d18b889216d886ee787fe1878e66be00"
+    },
     "com.cysharp.r3": {
       "version": "https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity",
       "depth": 0,
@@ -22,6 +33,20 @@
       "source": "git",
       "dependencies": {},
       "hash": "e74a84218512a229aac65488404a7a412cb86fa4"
+    },
+    "com.hk.unitysequencersystem": {
+      "version": "https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySequencerSystem",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "34688b7b5f6e400dd80cc02b52d8679033022d58"
+    },
+    "com.mackysoft.serializereference-extensions": {
+      "version": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "69f6e31cf1482afc03685dd71d63daecbc37a565"
     },
     "com.unity.2d.animation": {
       "version": "10.1.1",
@@ -135,7 +160,7 @@
     },
     "com.unity.collections": {
       "version": "2.4.0-pre.2",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.8.10",
@@ -203,7 +228,7 @@
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.4",
-      "depth": 3,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -280,7 +305,7 @@
     },
     "com.unity.test-framework.performance": {
       "version": "3.0.3",
-      "depth": 3,
+      "depth": 2,
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.31",
