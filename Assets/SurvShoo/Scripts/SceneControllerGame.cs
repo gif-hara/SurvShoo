@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace SurvShoo
@@ -7,10 +8,15 @@ namespace SurvShoo
     /// </summary>
     public sealed class SceneControllerGame : MonoBehaviour
     {
+        [SerializeField]
+        private Actor playerActorPrefab;
+        
         async void Start()
         {
             await BootSystem.IsReady;
-            Debug.Log("Game Start");
+            var playerActor = Instantiate(playerActorPrefab);
+            var gamePlayerController = new GamePlayerController();
+            gamePlayerController.Setup(playerActor);
         }
     }
 }
