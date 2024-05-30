@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using unity1week202403;
 using UnityEngine;
 
 namespace SurvShoo
@@ -40,6 +41,7 @@ namespace SurvShoo
         private static async UniTask InitializeInternalAsync()
         {
             initializeState = InitializeState.Initializing;
+            TinyServiceLocator.Register(new InputController());
             await UniTask.DelayFrame(1); // TODO: ここで初期化処理を行う
             initializeState = InitializeState.Initialized;
         }
