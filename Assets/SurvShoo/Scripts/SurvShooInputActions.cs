@@ -44,7 +44,7 @@ namespace SurvShoo
                     ""id"": ""2efc73fa-7bbc-43d9-a901-54ea4d1a9d23"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -53,7 +53,7 @@ namespace SurvShoo
                     ""id"": ""555ce1c3-5ec4-446f-9d79-a79bb757df81"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 }
             ],

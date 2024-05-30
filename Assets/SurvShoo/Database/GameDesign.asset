@@ -16,3 +16,4 @@ MonoBehaviour:
     moveSpeed:
       Min: 10
       Max: 24
+    slowModeMoveSpeedRate: 0.5

@@ -19,6 +19,10 @@ namespace SurvShoo
             [SerializeField]
             private MinMaxValue moveSpeed;
             public MinMaxValue MoveSpeed => moveSpeed;
+
+            [SerializeField]
+            private float slowModeMoveSpeedRate;
+            public float SlowModeMoveSpeedRate => slowModeMoveSpeedRate;
         }
     }
 }
