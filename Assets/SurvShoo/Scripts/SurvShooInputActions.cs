@@ -37,6 +37,24 @@ namespace SurvShoo
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""2efc73fa-7bbc-43d9-a901-54ea4d1a9d23"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlowMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""555ce1c3-5ec4-446f-9d79-a79bb757df81"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -94,6 +112,28 @@ namespace SurvShoo
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""158c933a-491b-4624-aac5-f83eebd17092"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""890b9b8d-c0a9-4e34-a497-ab9a4b4eab4c"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -103,6 +143,8 @@ namespace SurvShoo
             // Game
             m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
             m_Game_Move = m_Game.FindAction("Move", throwIfNotFound: true);
+            m_Game_Fire = m_Game.FindAction("Fire", throwIfNotFound: true);
+            m_Game_SlowMode = m_Game.FindAction("SlowMode", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -165,11 +207,15 @@ namespace SurvShoo
         private readonly InputActionMap m_Game;
         private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
         private readonly InputAction m_Game_Move;
+        private readonly InputAction m_Game_Fire;
+        private readonly InputAction m_Game_SlowMode;
         public struct GameActions
         {
             private @SurvShooInputActions m_Wrapper;
             public GameActions(@SurvShooInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Game_Move;
+            public InputAction @Fire => m_Wrapper.m_Game_Fire;
+            public InputAction @SlowMode => m_Wrapper.m_Game_SlowMode;
             public InputActionMap Get() { return m_Wrapper.m_Game; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -182,6 +228,12 @@ namespace SurvShoo
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @SlowMode.started += instance.OnSlowMode;
+                @SlowMode.performed += instance.OnSlowMode;
+                @SlowMode.canceled += instance.OnSlowMode;
             }
 
             private void UnregisterCallbacks(IGameActions instance)
@@ -189,6 +241,12 @@ namespace SurvShoo
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+                @Fire.started -= instance.OnFire;
+                @Fire.performed -= instance.OnFire;
+                @Fire.canceled -= instance.OnFire;
+                @SlowMode.started -= instance.OnSlowMode;
+                @SlowMode.performed -= instance.OnSlowMode;
+                @SlowMode.canceled -= instance.OnSlowMode;
             }
 
             public void RemoveCallbacks(IGameActions instance)
@@ -209,6 +267,8 @@ namespace SurvShoo
         public interface IGameActions
         {
             void OnMove(InputAction.CallbackContext context);
+            void OnFire(InputAction.CallbackContext context);
+            void OnSlowMode(InputAction.CallbackContext context);
         }
     }
 }
