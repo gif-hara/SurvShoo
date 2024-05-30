@@ -1,6 +1,5 @@
 using R3;
 using R3.Triggers;
-using unity1week202403;
 using UnityEngine;
 
 namespace SurvShoo
