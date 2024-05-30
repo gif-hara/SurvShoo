@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace SurvShoo
@@ -14,6 +13,7 @@ namespace SurvShoo
         async void Start()
         {
             await BootSystem.IsReady;
+            TinyServiceLocator.Resolve<InputController>().InputActions.Enable();
             var playerActor = Instantiate(playerActorPrefab);
             var gamePlayerController = new GamePlayerController();
             gamePlayerController.Setup(playerActor);

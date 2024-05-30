@@ -5,7 +5,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace unity1week202403
+namespace SurvShoo
 {
     public class TinyServiceLocator
     {

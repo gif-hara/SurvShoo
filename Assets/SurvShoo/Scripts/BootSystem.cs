@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using unity1week202403;
 using UnityEngine;
 
 namespace SurvShoo
