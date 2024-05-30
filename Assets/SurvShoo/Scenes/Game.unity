@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a63ed82546eeb4cbd8f47e1fd2d7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDesign: {fileID: 11400000, guid: b92d58abd30624998a9ef023df669e23, type: 2}
+  gameDesignData: {fileID: 11400000, guid: b92d58abd30624998a9ef023df669e23, type: 2}
   gameInstanceData:
     playerMoveSpeedLevel: 0
   playerActorPrefab: {fileID: 4853317107756426016, guid: 1bae47b89bee4a94592570ae771efb71, type: 3}

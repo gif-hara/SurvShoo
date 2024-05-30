@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SurvShoo
 {
@@ -8,7 +9,7 @@ namespace SurvShoo
     public sealed class SceneControllerGame : MonoBehaviour
     {
         [SerializeField]
-        private GameDesign gameDesign;
+        private GameDesignData gameDesignData;
         
         [SerializeField]
         private GameInstanceData gameInstanceData;
@@ -21,7 +22,7 @@ namespace SurvShoo
             await BootSystem.IsReady;
             TinyServiceLocator.Resolve<InputController>().InputActions.Enable();
             TinyServiceLocator.Register(gameInstanceData);
-            TinyServiceLocator.Register(gameDesign);
+            TinyServiceLocator.Register(gameDesignData);
             var playerActor = Instantiate(playerActorPrefab);
             var gamePlayerController = new GamePlayerController();
             gamePlayerController.Setup(playerActor);

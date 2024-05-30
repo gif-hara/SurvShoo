@@ -12,13 +12,13 @@ namespace SurvShoo
         public void Setup(Actor actor)
         {
             var inputController = TinyServiceLocator.Resolve<InputController>();
-            var gameDesign = TinyServiceLocator.Resolve<GameDesign>();
+            var gameDesignData = TinyServiceLocator.Resolve<GameDesignData>();
             var gameInstanceData = TinyServiceLocator.Resolve<GameInstanceData>();
             actor.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
                     var velocity = inputController.InputActions.Game.Move.ReadValue<Vector2>();
-                    var moveSpeed = gameDesign.PlayerData.GetMoveSpeedRate(gameInstanceData.PlayerMoveSpeedLevel, inputController.InputActions.Game.SlowMode.IsPress());
+                    var moveSpeed = gameDesignData.PlayerData.GetMoveSpeedRate(gameInstanceData.PlayerMoveSpeedLevel, inputController.InputActions.Game.SlowMode.IsPress());
                     actor.transform.localPosition += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime * moveSpeed;
 
                     if (inputController.InputActions.Game.Fire.IsPress())

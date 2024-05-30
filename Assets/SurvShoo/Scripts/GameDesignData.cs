@@ -6,8 +6,8 @@ namespace SurvShoo
     /// <summary>
     /// 
     /// </summary>
-    [CreateAssetMenu(menuName = "SurvShoo/GameDesign")]
-    public sealed class GameDesign : ScriptableObject
+    [CreateAssetMenu(menuName = "SurvShoo/GameDesignData")]
+    public sealed class GameDesignData : ScriptableObject
     {
         [SerializeField]
         private _PlayerData playerData;
