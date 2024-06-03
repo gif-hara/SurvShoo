@@ -9,17 +9,18 @@ namespace SurvShoo
     {
         [SerializeField]
         private GameDesignData gameDesignData;
-        
+
         [SerializeField]
         private GameInstanceData gameInstanceData;
-        
+
         async void Start()
         {
             await BootSystem.IsReady;
             TinyServiceLocator.Resolve<InputController>().InputActions.Enable();
             TinyServiceLocator.Register(gameInstanceData);
             TinyServiceLocator.Register(gameDesignData);
-            var playerActor = Instantiate(gameDesignData.PlayerData.ActorPrefab);
+            TinyServiceLocator.Register(new ActorPool());
+            var playerActor = gameDesignData.PlayerData.ActorPrefab.RentToPool();
             var gamePlayerController = new GamePlayerController();
             gamePlayerController.Setup(playerActor);
         }

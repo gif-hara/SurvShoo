@@ -20,6 +20,16 @@ namespace SurvShoo
             }
         }
 
+        public Actor RentToPool()
+        {
+            return TinyServiceLocator.Resolve<ActorPool>().Rent(this);
+        }
+
+        public void ReturnToPool()
+        {
+            TinyServiceLocator.Resolve<ActorPool>().Return(this);
+        }
+
         public void OnPoolRent()
         {
             poolCancellationTokenSource = new CancellationTokenSource();
