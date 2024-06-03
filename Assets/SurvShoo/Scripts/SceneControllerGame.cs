@@ -20,9 +20,7 @@ namespace SurvShoo
             TinyServiceLocator.Register(gameInstanceData);
             TinyServiceLocator.Register(gameDesignData);
             TinyServiceLocator.Register(new ActorPool());
-            var playerActor = gameDesignData.PlayerData.ActorPrefab.RentToPool();
-            var gamePlayerController = new GamePlayerController();
-            gamePlayerController.Setup(playerActor);
+            gameDesignData.PlayerData.ActorSpawner.Spawn(Vector3.zero, Quaternion.identity);
         }
     }
 }

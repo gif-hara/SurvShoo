@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameDesignData
   m_EditorClassIdentifier: 
   playerData:
-    actorPrefab: {fileID: 4853317107756426016, guid: 1bae47b89bee4a94592570ae771efb71, type: 3}
+    actorSpawner: {fileID: 11400000, guid: b17393200defc6f4ca4f9a675eb68dd8, type: 2}
     moveSpeed:
       Min: 10
       Max: 24

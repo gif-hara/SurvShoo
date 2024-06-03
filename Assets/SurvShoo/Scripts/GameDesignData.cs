@@ -12,27 +12,27 @@ namespace SurvShoo
         [SerializeField]
         private _PlayerData playerData;
         public _PlayerData PlayerData => playerData;
-        
+
         [SerializeField]
         private _BulletData.DictionaryList bulletData;
         public _BulletData.DictionaryList BulletData => bulletData;
-        
+
         [Serializable]
         public class _PlayerData
         {
             [SerializeField]
-            private Actor actorPrefab;
-            public Actor ActorPrefab => actorPrefab;
-            
+            private ActorSpawner actorSpawner;
+            public ActorSpawner ActorSpawner => actorSpawner;
+
             [SerializeField]
             private MinMaxValue moveSpeed;
 
             [SerializeField]
             private float slowModeMoveSpeedRate;
-            
+
             [SerializeField]
             private int moveSpeedLevelMax;
-            
+
             public float GetMoveSpeedRate(int level, bool isSlowMode)
             {
                 var rate = (float)level / moveSpeedLevelMax;
@@ -47,7 +47,7 @@ namespace SurvShoo
             [SerializeField]
             private string id;
             public string Id => id;
-            
+
             [SerializeField]
             private FloatData.DictionaryList database;
             public FloatData.DictionaryList Database => database;
@@ -67,11 +67,11 @@ namespace SurvShoo
             [SerializeField]
             private string id;
             public string Id => id;
-            
+
             [SerializeField]
             private float data;
             public float Data => data;
-            
+
             [Serializable]
             public class DictionaryList : DictionaryList<string, FloatData>
             {
