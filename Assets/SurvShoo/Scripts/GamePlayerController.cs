@@ -26,7 +26,7 @@ namespace SurvShoo
                         Debug.Log("Fire");
                     }
                 })
-                .RegisterTo(actor.destroyCancellationToken);
+                .RegisterTo(actor.poolCancellationToken);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace SurvShoo
                     actor.transform.position += new Vector3(velocity.x, velocity.y, 0.0f);
                     velocity = Vector2.zero;
                 })
-                .RegisterTo(actor.destroyCancellationToken);
+                .RegisterTo(actor.poolCancellationToken);
         }
 
         public void Move(Vector2 velocity)

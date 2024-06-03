@@ -11,7 +11,7 @@ namespace SurvShoo
     {
         private CancellationTokenSource poolCancellationTokenSource;
 
-        private CancellationToken poolCancellationToken
+        public CancellationToken poolCancellationToken
         {
             get
             {
@@ -30,6 +30,17 @@ namespace SurvShoo
             poolCancellationTokenSource.Cancel();
             poolCancellationTokenSource.Dispose();
             poolCancellationTokenSource = null;
+        }
+
+        private void OnDestroy()
+        {
+            if (poolCancellationToken != null)
+            {
+                Debug.LogWarning($"Actor \"{this.name}\" is destroyed without releasing from pool.", this);
+                poolCancellationTokenSource.Cancel();
+                poolCancellationTokenSource.Dispose();
+                poolCancellationTokenSource = null;
+            }
         }
     }
 }
