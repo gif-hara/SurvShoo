@@ -1,16 +1,22 @@
+using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using R3;
 using R3.Triggers;
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace SurvShoo
 {
     /// <summary>
     /// 
     /// </summary>
-    public sealed class GamePlayerController
+    [Serializable]
+    public sealed class GamePlayerController : ISequence
     {
-        public void Setup(Actor actor)
+        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
+            var actor = container.Resolve<Actor>("Owner");
             var inputController = TinyServiceLocator.Resolve<InputController>();
             var gameDesignData = TinyServiceLocator.Resolve<GameDesignData>();
             var gameInstanceData = TinyServiceLocator.Resolve<GameInstanceData>();
@@ -27,6 +33,7 @@ namespace SurvShoo
                     }
                 })
                 .RegisterTo(actor.poolCancellationToken);
+            return UniTask.CompletedTask;
         }
     }
 }
