@@ -40,6 +40,7 @@ namespace SurvShoo
         private static async UniTask InitializeInternalAsync()
         {
             initializeState = InitializeState.Initializing;
+            TinyServiceLocator.Register(new InputController());
             await UniTask.DelayFrame(1); // TODO: ここで初期化処理を行う
             initializeState = InitializeState.Initialized;
         }
