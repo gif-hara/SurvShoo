@@ -22,6 +22,7 @@ namespace SurvShoo
             actor.transform.position = position;
             actor.transform.rotation = rotation;
             var container = new Container();
+            container.Register("Owner", actor);
             var sequencer = new Sequencer(container, onEnterSequences.Sequences);
             sequencer.PlayAsync(actor.poolCancellationToken).Forget();
         }
