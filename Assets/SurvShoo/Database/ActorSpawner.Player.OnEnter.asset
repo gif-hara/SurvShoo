@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: ActorSpawner.Player.OnEnter
   m_EditorClassIdentifier: 
   sequences:
-  - rid: 8626900253231284409
+  - rid: 8626900253231284423
   references:
     version: 2
     RefIds:
-    - rid: 8626900253231284409
-      type: {class: Log, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
-      data:
-        message: Hello
+    - rid: 8626900253231284423
+      type: {class: GamePlayerController, ns: SurvShoo, asm: Assembly-CSharp}
+      data: 
