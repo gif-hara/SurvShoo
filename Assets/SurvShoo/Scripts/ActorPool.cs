@@ -42,7 +42,11 @@ namespace SurvShoo
             public Pool(Actor prefab)
             {
                 this.prefab = prefab;
-                pool = new ObjectPool<Actor>(OnCreate);
+                pool = new ObjectPool<Actor>(
+                    OnCreate,
+                    actionOnGet: OnGet,
+                    actionOnRelease: OnRelease
+                    );
             }
 
             public Actor Rent()
@@ -58,6 +62,16 @@ namespace SurvShoo
             private Actor OnCreate()
             {
                 return UnityEngine.Object.Instantiate(prefab);
+            }
+
+            private void OnGet(Actor actor)
+            {
+                actor.OnPoolRent();
+            }
+
+            private void OnRelease(Actor actor)
+            {
+                actor.OnPoolRelease();
             }
         }
     }
