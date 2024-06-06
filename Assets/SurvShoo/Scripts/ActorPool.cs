@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Pool;
 
 namespace SurvShoo
@@ -25,9 +26,9 @@ namespace SurvShoo
             return pool.Rent();
         }
 
-        public void Return(Actor actor)
+        public void Return(Actor originalPrefab, Actor actor)
         {
-            if (pools.TryGetValue(actor, out var pool))
+            if (pools.TryGetValue(originalPrefab, out var pool))
             {
                 pool.Return(actor);
             }

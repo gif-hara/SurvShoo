@@ -15,6 +15,8 @@ namespace SurvShoo
 
         private CancellationTokenSource poolCancellationTokenSource;
 
+        private Actor originalPrefab;
+
         public CancellationToken poolCancellationToken
         {
             get
@@ -26,24 +28,30 @@ namespace SurvShoo
 
         public Actor RentToPool()
         {
-            return TinyServiceLocator.Resolve<ActorPool>().Rent(this);
+            var result = TinyServiceLocator.Resolve<ActorPool>().Rent(this);
+            result.originalPrefab = this;
+            return result;
         }
 
         public void ReturnToPool()
         {
-            TinyServiceLocator.Resolve<ActorPool>().Return(this);
+            Assert.IsNotNull(originalPrefab);
+            TinyServiceLocator.Resolve<ActorPool>().Return(originalPrefab, this);
         }
 
         public void OnPoolRent()
         {
             poolCancellationTokenSource = new CancellationTokenSource();
+            gameObject.SetActive(true);
         }
 
         public void OnPoolRelease()
         {
+            gameObject.SetActive(false);
             poolCancellationTokenSource.Cancel();
             poolCancellationTokenSource.Dispose();
             poolCancellationTokenSource = null;
+            Debug.Log("OnPoolRelease");
         }
     }
 }
