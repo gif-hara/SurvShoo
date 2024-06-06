@@ -33,6 +33,10 @@ namespace SurvShoo
             [SerializeField]
             private int moveSpeedLevelMax;
 
+            [SerializeField]
+            private ActorSpawner bulletSpawner;
+            public ActorSpawner BulletSpawner => bulletSpawner;
+
             public float GetMoveSpeedRate(int level, bool isSlowMode)
             {
                 var rate = (float)level / moveSpeedLevelMax;
