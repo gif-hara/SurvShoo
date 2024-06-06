@@ -19,6 +19,7 @@ MonoBehaviour:
       Max: 24
     slowModeMoveSpeedRate: 0.5
     moveSpeedLevelMax: 10
+    bulletSpawner: {fileID: 11400000, guid: 50fda6023813c2b40a0214da921aad01, type: 2}
   bulletData:
     list:
     - id: Player.0
