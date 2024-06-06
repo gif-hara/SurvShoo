@@ -9,6 +9,10 @@ namespace SurvShoo
     /// </summary>
     public sealed class Actor : MonoBehaviour
     {
+        [SerializeField]
+        private ActorLocatorHolder locatorHolder;
+        public ActorLocatorHolder LocatorHolder => locatorHolder;
+
         private CancellationTokenSource poolCancellationTokenSource;
 
         public CancellationToken poolCancellationToken
