@@ -13,54 +13,71 @@ MonoBehaviour:
   m_Name: ActorSpawner.PlayerBullet.OnEnter
   m_EditorClassIdentifier: 
   sequences:
-  - rid: 8626900253231284427
+  - rid: 8626900321172193383
+  - rid: 8626900321172193364
+  - rid: 8626900321172193371
   references:
     version: 2
     RefIds:
-    - rid: 8626900253231284427
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 8626900321172193364
       type: {class: BindToLocalPositionY, ns: UnitySequencerSystem.LitMotion, asm: UnitySequencerSystem}
       data:
         targetResolver:
-          rid: 8626900253231284431
+          rid: 8626900321172193366
         parameters:
           fromResolver:
-            rid: 8626900253231284428
+            rid: 8626900321172193365
           toResolver:
-            rid: 8626900253231284432
+            rid: 8626900321172193367
           durationResolver:
-            rid: 8626900253231284433
+            rid: 8626900321172193368
           delayResolver:
-            rid: 8626900253231284434
+            rid: -2
           loopCountResolver:
-            rid: 8626900253231284435
+            rid: -2
           loopType: 0
           motionSchedulerResolver:
-            rid: 8626900253231284436
+            rid: -2
           ease: 0
-    - rid: 8626900253231284428
+    - rid: 8626900321172193365
       type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
-    - rid: 8626900253231284431
+    - rid: 8626900321172193366
       type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
+        name: View
+    - rid: 8626900321172193367
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 50
+    - rid: 8626900321172193368
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0.5
+    - rid: 8626900321172193371
+      type: {class: ActorReturnToPool, ns: SurvShoo, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 8626900321172193374
+    - rid: 8626900321172193374
+      type: {class: ActorResolver/Name, ns: SurvShoo.Resolvers, asm: Assembly-CSharp}
+      data:
         name: Owner
-    - rid: 8626900253231284432
-      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+    - rid: 8626900321172193383
+      type: {class: TransformSetLocalPosition, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:
-        value: 1
-    - rid: 8626900253231284433
-      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+        targetResolver:
+          rid: 8626900321172193384
+        positionResolver:
+          rid: 8626900321172193385
+    - rid: 8626900321172193384
+      type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 1
-    - rid: 8626900253231284434
-      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+        name: View
+    - rid: 8626900321172193385
+      type: {class: Vector3Resolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 0
-    - rid: 8626900253231284435
-      type: {class: IntResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 0
-    - rid: 8626900253231284436
-      type: {class: MotionSchedulerResolver/Update, ns: UnitySequencerSystem.Resolvers.LitMotion, asm: UnitySequencerSystem}
-      data: 
+        value: {x: 0, y: 0, z: 0}
