@@ -29,7 +29,7 @@ namespace SurvShoo
 
                     if (inputController.InputActions.Game.Fire.IsPress())
                     {
-                        Debug.Log("Fire");
+                        gameDesignData.PlayerData.BulletSpawner.Spawn(actor.transform.position, Quaternion.identity);
                     }
                 })
                 .RegisterTo(actor.poolCancellationToken);
