@@ -17,7 +17,7 @@ namespace SurvShoo
             Min = min;
             Max = max;
         }
-        
+
         public float Evaluate(float value)
         {
             return Mathf.Lerp(Min, Max, value);

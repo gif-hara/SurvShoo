@@ -12,5 +12,12 @@ namespace SurvShoo
         [SerializeField]
         private int playerMoveSpeedLevel;
         public int PlayerMoveSpeedLevel { get => playerMoveSpeedLevel; set => playerMoveSpeedLevel = value; }
+
+        [SerializeField]
+        private int playerFireCooldownLevel;
+        public int PlayerFireCooldownLevel
+        {
+            get => playerFireCooldownLevel; set => playerFireCooldownLevel = value;
+        }
     }
 }

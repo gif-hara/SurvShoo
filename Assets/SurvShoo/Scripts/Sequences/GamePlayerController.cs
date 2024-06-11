@@ -20,16 +20,19 @@ namespace SurvShoo
             var inputController = TinyServiceLocator.Resolve<InputController>();
             var gameDesignData = TinyServiceLocator.Resolve<GameDesignData>();
             var gameInstanceData = TinyServiceLocator.Resolve<GameInstanceData>();
+            var coolDownSeconds = gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel);
             actor.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
                     var velocity = inputController.InputActions.Game.Move.ReadValue<Vector2>();
                     var moveSpeed = gameDesignData.PlayerData.GetMoveSpeedRate(gameInstanceData.PlayerMoveSpeedLevel, inputController.InputActions.Game.SlowMode.IsPress());
                     actor.transform.localPosition += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime * moveSpeed;
+                    coolDownSeconds -= Time.deltaTime;
 
-                    if (inputController.InputActions.Game.Fire.IsPress())
+                    if (coolDownSeconds <= 0.0f && inputController.InputActions.Game.Fire.IsPress())
                     {
                         gameDesignData.PlayerData.BulletSpawner.Spawn(actor.transform.position, Quaternion.identity);
+                        coolDownSeconds = gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel);
                     }
                 })
                 .RegisterTo(actor.poolCancellationToken);

@@ -37,11 +37,23 @@ namespace SurvShoo
             private ActorSpawner bulletSpawner;
             public ActorSpawner BulletSpawner => bulletSpawner;
 
+            [SerializeField]
+            private MinMaxValue fireCooldown;
+
+            [SerializeField]
+            private int fireCooldownLevelMax;
+
             public float GetMoveSpeedRate(int level, bool isSlowMode)
             {
                 var rate = (float)level / moveSpeedLevelMax;
                 var slowModeRate = isSlowMode ? slowModeMoveSpeedRate : 1.0f;
                 return moveSpeed.Evaluate(rate) * slowModeRate;
+            }
+
+            public float GetFireCooldown(int level)
+            {
+                var rate = (float)level / fireCooldownLevelMax;
+                return fireCooldown.Evaluate(rate);
             }
         }
 
