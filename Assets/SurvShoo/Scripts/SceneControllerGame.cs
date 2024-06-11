@@ -13,6 +13,12 @@ namespace SurvShoo
         [SerializeField]
         private GameInstanceData gameInstanceData;
 
+        [SerializeField]
+        private ActorSpawner debugEnemySpawner;
+
+        [SerializeField]
+        private Transform debugEnemySpawnerPoint;
+
         async void Start()
         {
             await BootSystem.IsReady;
@@ -21,6 +27,11 @@ namespace SurvShoo
             TinyServiceLocator.Register(gameDesignData);
             TinyServiceLocator.Register(new ActorPool());
             gameDesignData.PlayerData.ActorSpawner.Spawn(Vector3.zero, Quaternion.identity);
+
+            if (debugEnemySpawner != null && debugEnemySpawnerPoint != null)
+            {
+                debugEnemySpawner.Spawn(debugEnemySpawnerPoint.position, debugEnemySpawnerPoint.rotation);
+            }
         }
     }
 }
