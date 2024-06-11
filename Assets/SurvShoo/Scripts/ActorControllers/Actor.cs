@@ -51,7 +51,6 @@ namespace SurvShoo
             poolCancellationTokenSource.Cancel();
             poolCancellationTokenSource.Dispose();
             poolCancellationTokenSource = null;
-            Debug.Log("OnPoolRelease");
         }
     }
 }
