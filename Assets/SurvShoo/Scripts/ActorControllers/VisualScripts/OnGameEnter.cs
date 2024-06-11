@@ -1,16 +1,7 @@
-using System;
 using Unity.VisualScripting;
 
-namespace SurvShoo.ActorControllers.Events
+namespace SurvShoo.ActorControllers.VisualScripts
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public static class Messages
-    {
-        public const string OnGameEnter = "OnGameEnter";
-    }
-
     [UnitTitle("OnGameEnter")]
     [UnitCategory("Events\\SurvShoo/ActorControllers")]
     public class OnGameEnter : EventUnit<Actor>
