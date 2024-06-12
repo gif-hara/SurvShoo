@@ -7,7 +7,7 @@ namespace SurvShoo.ActorControllers.VisualScripts
     public class OnGameEnter : EventUnit<Actor>
     {
         [DoNotSerialize]
-        public ValueOutput result { get; private set; }
+        public ValueOutput owner { get; private set; }
 
         protected override bool register => true;
 
@@ -19,12 +19,12 @@ namespace SurvShoo.ActorControllers.VisualScripts
         protected override void Definition()
         {
             base.Definition();
-            result = ValueOutput<Actor>(nameof(result));
+            owner = ValueOutput<Actor>(nameof(owner));
         }
 
-        protected override void AssignArguments(Flow flow, Actor data)
+        protected override void AssignArguments(Flow flow, Actor owner)
         {
-            flow.SetValue(result, data);
+            flow.SetValue(this.owner, owner);
         }
     }
 }
