@@ -12,6 +12,11 @@ namespace SurvShoo
         [SerializeField]
         private ActorLocatorHolder locatorHolder;
         public ActorLocatorHolder LocatorHolder => locatorHolder;
+
+        [SerializeField]
+        private int hitPoint;
+
+        private int currentHitPoint;
         
         private CancellationTokenSource poolCancellationTokenSource;
 
@@ -42,6 +47,7 @@ namespace SurvShoo
         public void OnPoolRent()
         {
             poolCancellationTokenSource = new CancellationTokenSource();
+            currentHitPoint = hitPoint;
             gameObject.SetActive(true);
         }
 
@@ -51,6 +57,21 @@ namespace SurvShoo
             poolCancellationTokenSource.Cancel();
             poolCancellationTokenSource.Dispose();
             poolCancellationTokenSource = null;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            if(currentHitPoint <= 0)
+            {
+                return;
+            }
+            
+            currentHitPoint -= damage;
+            if(currentHitPoint <= 0)
+            {
+                currentHitPoint = 0;
+                ReturnToPool();
+            }
         }
     }
 }

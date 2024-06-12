@@ -22,6 +22,10 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 1122523467643093091
+      type: {class: IntResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 10
     - rid: 8626900321172193364
       type: {class: BindToLocalPositionY, ns: UnitySequencerSystem.LitMotion, asm: UnitySequencerSystem}
       data:
@@ -87,6 +91,8 @@ MonoBehaviour:
       data:
         actorResolver:
           rid: 8626900434515918929
+        damageResolver:
+          rid: 1122523467643093091
     - rid: 8626900434515918929
       type: {class: ActorResolver/Name, ns: SurvShoo.Resolvers, asm: Assembly-CSharp}
       data:
