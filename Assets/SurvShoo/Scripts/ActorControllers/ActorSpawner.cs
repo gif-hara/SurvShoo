@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace SurvShoo
 {
@@ -10,6 +12,9 @@ namespace SurvShoo
     {
         [SerializeField]
         private Actor actorPrefab;
+        
+        [SerializeField]
+        private ScriptableSequences onEnterSequences;
 
         public void Spawn(Vector3 position, Quaternion rotation)
         {
@@ -17,6 +22,12 @@ namespace SurvShoo
             var t = actor.transform;
             t.position = position;
             t.rotation = rotation;
+            var container = new Container();
+            container.Register("Owner", actor);
+            container.Register("Owner", actor.transform);
+            container.Register("View", actor.LocatorHolder.View);
+            var sequencer = new Sequencer(container, onEnterSequences.Sequences);
+            sequencer.PlayAsync(actor.poolCancellationToken).Forget();
         }
     }
 }
