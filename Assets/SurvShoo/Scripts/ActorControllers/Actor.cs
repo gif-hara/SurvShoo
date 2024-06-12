@@ -1,5 +1,4 @@
 using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -14,10 +13,6 @@ namespace SurvShoo
         private ActorLocatorHolder locatorHolder;
         public ActorLocatorHolder LocatorHolder => locatorHolder;
         
-        [SerializeField]
-        private ScriptMachine scriptMachine;
-        public ScriptMachine ScriptMachine => scriptMachine;
-
         private CancellationTokenSource poolCancellationTokenSource;
 
         private Actor originalPrefab;

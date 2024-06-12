@@ -75,8 +75,6 @@ GameObject:
   - component: {fileID: 6647300219068350998}
   - component: {fileID: -4806832295647805406}
   - component: {fileID: 7042036624688776367}
-  - component: {fileID: 1921089194887207497}
-  - component: {fileID: 514525160792377546}
   m_Layer: 0
   m_Name: Actor
   m_TagString: Untagged
@@ -113,7 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locatorHolder: {fileID: -4806832295647805406}
-  scriptMachine: {fileID: 514525160792377546}
 --- !u!114 &-4806832295647805406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,35 +151,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &1921089194887207497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8197409149289038984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Owner","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"SurvShoo.Actor,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
-    _objectReferences:
-    - {fileID: 6647300219068350998}
---- !u!114 &514525160792377546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8197409149289038984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2fe5546f775c47d2820aa5e8a715f53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data:
-    _json: '{"nest":{"source":"Macro","macro":null,"embed":null}}'
-    _objectReferences: []
