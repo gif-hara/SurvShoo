@@ -53,11 +53,11 @@ MonoBehaviour:
     - rid: 8626900321172193367
       type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 50
+        value: 30
     - rid: 8626900321172193368
       type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 0.5
+        value: 0.4
     - rid: 8626900321172193371
       type: {class: ActorReturnToPool, ns: SurvShoo, asm: Assembly-CSharp}
       data:
