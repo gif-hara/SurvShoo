@@ -27,8 +27,7 @@ namespace SurvShoo
                 {
                     Debug.Log($"Hit {collider.attachedRigidbody.name}");
                 })
-                .AddTo(cancellationToken)
-                .AddTo(actor.poolCancellationToken);
+                .RegisterTo(cancellationToken);
             return UniTask.CompletedTask;
         }
     }
