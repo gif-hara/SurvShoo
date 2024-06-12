@@ -21,7 +21,7 @@ MonoBehaviour:
     moveSpeedLevelMax: 10
     bulletSpawner: {fileID: 11400000, guid: 50fda6023813c2b40a0214da921aad01, type: 2}
     fireCooldown:
-      Min: 1
+      Min: 0.083333336
       Max: 0.033333335
     fireCooldownLevelMax: 4
   bulletData:
