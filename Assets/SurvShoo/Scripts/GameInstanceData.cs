@@ -15,9 +15,10 @@ namespace SurvShoo
 
         [SerializeField]
         private int playerFireCooldownLevel;
-        public int PlayerFireCooldownLevel
-        {
-            get => playerFireCooldownLevel; set => playerFireCooldownLevel = value;
-        }
+        public int PlayerFireCooldownLevel { get => playerFireCooldownLevel; set => playerFireCooldownLevel = value; }
+
+        [SerializeField]
+        private int playerBulletFirePointLevel;
+        public int PlayerBulletFirePointLevel { get => playerBulletFirePointLevel; set => playerBulletFirePointLevel = value; }
     }
 }

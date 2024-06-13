@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SurvShoo
@@ -10,5 +11,9 @@ namespace SurvShoo
         [SerializeField]
         private Transform view;
         public Transform View => view;
+
+        [SerializeField]
+        private List<Transform> bulletFirePoints;
+        public List<Transform> BulletFirePoints => bulletFirePoints;
     }
 }

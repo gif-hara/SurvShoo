@@ -31,7 +31,12 @@ namespace SurvShoo
 
                     if (coolDownSeconds <= 0.0f && inputController.InputActions.Game.Fire.IsPress())
                     {
-                        gameDesignData.PlayerData.BulletSpawner.Spawn(actor.transform.position, Quaternion.identity);
+                        var firePointParent = actor.LocatorHolder.BulletFirePoints[gameInstanceData.PlayerBulletFirePointLevel];
+                        for(var i=0; i<firePointParent.childCount; i++)
+                        {
+                            var firePoint = firePointParent.GetChild(i);
+                            gameDesignData.PlayerData.BulletSpawner.Spawn(firePoint.position, firePoint.rotation);
+                        }
                         coolDownSeconds = gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel);
                     }
                 })
