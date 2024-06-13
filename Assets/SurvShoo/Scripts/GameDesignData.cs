@@ -32,6 +32,7 @@ namespace SurvShoo
 
             [SerializeField]
             private int moveSpeedLevelMax;
+            public int MoveSpeedLevelMax => moveSpeedLevelMax;
 
             [SerializeField]
             private ActorSpawner bulletSpawner;
@@ -42,6 +43,11 @@ namespace SurvShoo
 
             [SerializeField]
             private int fireCooldownLevelMax;
+            public int FireCooldownLevelMax => fireCooldownLevelMax;
+            
+            [SerializeField]
+            private int bulletFirePointLevelMax;
+            public int BulletFirePointLevelMax => bulletFirePointLevelMax;
 
             public float GetMoveSpeedRate(int level, bool isSlowMode)
             {

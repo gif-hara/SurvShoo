@@ -23,6 +23,33 @@ namespace SurvShoo
         private IntInstanceData playerBulletFirePointLevel;
         public IntInstanceData PlayerBulletFirePointLevel => playerBulletFirePointLevel;
         
+        public void AddPlayerMoveSpeedLevel(int value)
+        {
+            playerMoveSpeedLevel.Data = Mathf.Clamp(
+                playerMoveSpeedLevel.Data + value,
+                0,
+                TinyServiceLocator.Resolve<GameDesignData>().PlayerData.MoveSpeedLevelMax
+                );
+        }
+        
+        public void AddPlayerFireCooldownLevel(int value)
+        {
+            playerFireCooldownLevel.Data = Mathf.Clamp(
+                playerFireCooldownLevel.Data + value,
+                0,
+                TinyServiceLocator.Resolve<GameDesignData>().PlayerData.FireCooldownLevelMax
+                );
+        }
+        
+        public void AddPlayerBulletFirePointLevel(int value)
+        {
+            playerBulletFirePointLevel.Data = Mathf.Clamp(
+                playerBulletFirePointLevel.Data + value,
+                0,
+                TinyServiceLocator.Resolve<GameDesignData>().PlayerData.BulletFirePointLevelMax
+                );
+        }
+        
         [Serializable]
         public abstract class InstanceData<T>
         {
