@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using R3;
@@ -26,6 +27,11 @@ namespace SurvShoo
                 () => gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel.Data),
                 () => $"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel.Data}"
             );
+            var currentOptionLevels = new List<int>();
+            foreach (var _ in gameDesignData.OptionDataList)
+            {
+                currentOptionLevels.Add(0);
+            }
             actor.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
@@ -35,6 +41,35 @@ namespace SurvShoo
                     bulletFireController.CanFire = inputController.InputActions.Game.Fire.IsPress();
                 })
                 .RegisterTo(actor.poolCancellationToken);
+            for (var i = 0; i < gameInstanceData.OptionLevels.Count; i++)
+            {
+                var index = i;
+                gameInstanceData.OptionLevels[index].DataAsObservable()
+                    .Subscribe(x =>
+                    {
+                        var diff = x - currentOptionLevels[index];
+                        if (diff > 0)
+                        {
+                            var oldParent = actor.LocatorHolder.Get($"OptionPoint.{index}.{currentOptionLevels[index]}");
+                            for (var j = 0; j < oldParent.childCount; j++)
+                            {
+                                var child = oldParent.GetChild(j);
+                                child.GetComponentInChildren<Actor>().ReturnToPool();
+                            }
+                            var optionGameDesignData = gameDesignData.OptionDataList[index];
+                            var parent = actor.LocatorHolder.Get($"OptionPoint.{index}.{x}");
+                            for (var j = 0; j < parent.childCount; j++)
+                            {
+                                var p = parent.GetChild(j);
+                                var optionActor = optionGameDesignData.ActorSpawner.Spawn(p.position, p.rotation);
+                                optionActor.transform.SetParent(p);
+                            }
+                        }
+                        currentOptionLevels[index] = x;
+                        // TODO: Optionが減る処理は必要になったら実装する
+                    })
+                    .RegisterTo(actor.poolCancellationToken);
+            }
             return UniTask.CompletedTask;
         }
     }
