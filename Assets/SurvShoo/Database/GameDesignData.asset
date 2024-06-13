@@ -25,6 +25,9 @@ MonoBehaviour:
       Max: 0.033333335
     fireCooldownLevelMax: 4
     bulletFirePointLevelMax: 4
+  optionDataList:
+  - actorSpawner: {fileID: 0}
+    bulletSpawner: {fileID: 0}
   bulletData:
     list:
     - id: Player.0

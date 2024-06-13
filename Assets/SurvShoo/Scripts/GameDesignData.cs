@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SurvShoo
@@ -12,6 +13,10 @@ namespace SurvShoo
         [SerializeField]
         private _PlayerData playerData;
         public _PlayerData PlayerData => playerData;
+
+        [SerializeField]
+        private List<_OptionData> optionDataList;
+        public List<_OptionData> OptionDataList => optionDataList;
 
         [SerializeField]
         private _BulletData.DictionaryList bulletData;
@@ -44,7 +49,7 @@ namespace SurvShoo
             [SerializeField]
             private int fireCooldownLevelMax;
             public int FireCooldownLevelMax => fireCooldownLevelMax;
-            
+
             [SerializeField]
             private int bulletFirePointLevelMax;
             public int BulletFirePointLevelMax => bulletFirePointLevelMax;
@@ -61,6 +66,16 @@ namespace SurvShoo
                 var rate = (float)level / fireCooldownLevelMax;
                 return fireCooldown.Evaluate(rate);
             }
+        }
+
+        [Serializable]
+        public class _OptionData
+        {
+            [SerializeField]
+            private ActorSpawner actorSpawner;
+
+            [SerializeField]
+            private ActorSpawner bulletSpawner;
         }
 
         [Serializable]
