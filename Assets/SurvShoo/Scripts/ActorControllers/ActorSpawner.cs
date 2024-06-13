@@ -25,7 +25,7 @@ namespace SurvShoo
             var container = new Container();
             container.Register("Owner", actor);
             container.Register("Owner", actor.transform);
-            container.Register("View", actor.LocatorHolder.View);
+            container.Register("View", actor.LocatorHolder.Get("View"));
             var sequencer = new Sequencer(container, onEnterSequences.Sequences);
             sequencer.PlayAsync(actor.poolCancellationToken).Forget();
         }

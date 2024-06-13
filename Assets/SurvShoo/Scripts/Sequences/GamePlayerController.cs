@@ -31,7 +31,7 @@ namespace SurvShoo
 
                     if (coolDownSeconds <= 0.0f && inputController.InputActions.Game.Fire.IsPress())
                     {
-                        var firePointParent = actor.LocatorHolder.BulletFirePoints[gameInstanceData.PlayerBulletFirePointLevel];
+                        var firePointParent = actor.LocatorHolder.Get($"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel}");
                         for(var i=0; i<firePointParent.childCount; i++)
                         {
                             var firePoint = firePointParent.GetChild(i);

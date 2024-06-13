@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locatorHolder: {fileID: -4806832295647805406}
+  hitPoint: 0
 --- !u!114 &-4806832295647805406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34af4ab60fae8fa43a1c74f1a9e01e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view: {fileID: 1567177479789597229}
+  elements:
+  - key: View
+    locator: {fileID: 1567177479789597229}
 --- !u!50 &7042036624688776367
 Rigidbody2D:
   serializedVersion: 4
