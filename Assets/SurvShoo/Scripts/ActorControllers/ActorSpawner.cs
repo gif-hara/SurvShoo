@@ -12,11 +12,11 @@ namespace SurvShoo
     {
         [SerializeField]
         private Actor actorPrefab;
-        
+
         [SerializeField]
         private ScriptableSequences onEnterSequences;
 
-        public void Spawn(Vector3 position, Quaternion rotation)
+        public Actor Spawn(Vector3 position, Quaternion rotation)
         {
             var actor = actorPrefab.RentToPool();
             var t = actor.transform;
@@ -26,8 +26,12 @@ namespace SurvShoo
             container.Register("Owner", actor);
             container.Register("Owner", actor.transform);
             container.Register("View", actor.LocatorHolder.Get("View"));
-            var sequencer = new Sequencer(container, onEnterSequences.Sequences);
-            sequencer.PlayAsync(actor.poolCancellationToken).Forget();
+            if (onEnterSequences != null)
+            {
+                var sequencer = new Sequencer(container, onEnterSequences.Sequences);
+                sequencer.PlayAsync(actor.poolCancellationToken).Forget();
+            }
+            return actor;
         }
     }
 }
