@@ -24,6 +24,7 @@ MonoBehaviour:
       Min: 0.083333336
       Max: 0.033333335
     fireCooldownLevelMax: 4
+    bulletFirePointLevelMax: 4
   bulletData:
     list:
     - id: Player.0
