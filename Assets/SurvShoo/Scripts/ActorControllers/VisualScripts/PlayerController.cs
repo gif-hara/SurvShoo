@@ -24,13 +24,13 @@ namespace SurvShoo.ActorControllers.VisualScripts
                 var inputController = TinyServiceLocator.Resolve<InputController>();
                 var gameDesignData = TinyServiceLocator.Resolve<GameDesignData>();
                 var gameInstanceData = TinyServiceLocator.Resolve<GameInstanceData>();
-                var coolDownSeconds = gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel);
+                var coolDownSeconds = gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel.Data);
                 actor.UpdateAsObservable()
                     .Subscribe(_ =>
                     {
                         var velocity = inputController.InputActions.Game.Move.ReadValue<Vector2>();
                         var moveSpeed = gameDesignData.PlayerData.GetMoveSpeedRate(
-                            gameInstanceData.PlayerMoveSpeedLevel,
+                            gameInstanceData.PlayerMoveSpeedLevel.Data,
                             inputController.InputActions.Game.SlowMode.IsPress());
                         actor.transform.localPosition +=
                             new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime * moveSpeed;
@@ -41,7 +41,7 @@ namespace SurvShoo.ActorControllers.VisualScripts
                             gameDesignData.PlayerData.BulletSpawner.Spawn(actor.transform.position,
                                 Quaternion.identity);
                             coolDownSeconds =
-                                gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel);
+                                gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel.Data);
                         }
                     })
                     .RegisterTo(actor.poolCancellationToken);

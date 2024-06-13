@@ -23,14 +23,14 @@ namespace SurvShoo
             var bulletFireController = new ActorBulletFireController(
                 actor,
                 gameDesignData.PlayerData.BulletSpawner,
-                () => gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel),
-                () => $"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel}"
+                () => gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel.Data),
+                () => $"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel.Data}"
             );
             actor.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
                     var velocity = inputController.InputActions.Game.Move.ReadValue<Vector2>();
-                    var moveSpeed = gameDesignData.PlayerData.GetMoveSpeedRate(gameInstanceData.PlayerMoveSpeedLevel, inputController.InputActions.Game.SlowMode.IsPress());
+                    var moveSpeed = gameDesignData.PlayerData.GetMoveSpeedRate(gameInstanceData.PlayerMoveSpeedLevel.Data, inputController.InputActions.Game.SlowMode.IsPress());
                     actor.transform.localPosition += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime * moveSpeed;
                     bulletFireController.CanFire = inputController.InputActions.Game.Fire.IsPress();
                 })

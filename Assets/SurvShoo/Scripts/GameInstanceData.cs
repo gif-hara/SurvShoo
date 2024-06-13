@@ -12,69 +12,44 @@ namespace SurvShoo
     public sealed class GameInstanceData
     {
         [SerializeField]
-        private int playerMoveSpeedLevel;
+        private IntInstanceData playerMoveSpeedLevel;
+        public IntInstanceData PlayerMoveSpeedLevel => playerMoveSpeedLevel;
         
-        private ReactiveProperty<int> playerMoveSpeedLevelReactiveProperty;
-
-        public int PlayerMoveSpeedLevel
-        {
-            get => playerMoveSpeedLevel;
-            set
-            {
-                playerMoveSpeedLevel = value;
-                playerMoveSpeedLevelReactiveProperty ??= new ReactiveProperty<int>();
-                playerMoveSpeedLevelReactiveProperty.Value = value;
-            }
-        }
-
-        public ReadOnlyReactiveProperty<int> PlayerMoveSpeedLevelAsObservable()
-        {
-            playerMoveSpeedLevelReactiveProperty ??= new ReactiveProperty<int>(playerMoveSpeedLevel);
-            return playerMoveSpeedLevelReactiveProperty;
-        }
-
         [SerializeField]
-        private int playerFireCooldownLevel;
+        private IntInstanceData playerFireCooldownLevel;
+        public IntInstanceData PlayerFireCooldownLevel => playerFireCooldownLevel;
         
-        private ReactiveProperty<int> playerFireCooldownLevelReactiveProperty;
-
-        public int PlayerFireCooldownLevel
-        {
-            get => playerFireCooldownLevel;
-            set
-            {
-                playerFireCooldownLevel = value;
-                playerFireCooldownLevelReactiveProperty ??= new ReactiveProperty<int>();
-                playerFireCooldownLevelReactiveProperty.Value = value;
-            }
-        }
-
-        public ReadOnlyReactiveProperty<int> PlayerFireCooldownLevelAsObservable()
-        {
-            playerFireCooldownLevelReactiveProperty ??= new ReactiveProperty<int>(playerFireCooldownLevel);
-            return playerFireCooldownLevelReactiveProperty;
-        }
-
         [SerializeField]
-        private int playerBulletFirePointLevel;
+        private IntInstanceData playerBulletFirePointLevel;
+        public IntInstanceData PlayerBulletFirePointLevel => playerBulletFirePointLevel;
         
-        private ReactiveProperty<int> playerBulletFirePointLevelReactiveProperty;
-
-        public int PlayerBulletFirePointLevel
+        [Serializable]
+        public abstract class InstanceData<T>
         {
-            get => playerBulletFirePointLevel;
-            set
+            [SerializeField]
+            private T data;
+        
+            private ReactiveProperty<T> dataReactiveProperty;
+
+            public T Data
             {
-                playerBulletFirePointLevel = value;
-                playerBulletFirePointLevelReactiveProperty ??= new ReactiveProperty<int>();
-                playerBulletFirePointLevelReactiveProperty.Value = value;
+                get => data;
+                set
+                {
+                    data = value;
+                    dataReactiveProperty ??= new ReactiveProperty<T>(data);
+                    dataReactiveProperty.Value = value;
+                }
+            }
+
+            public ReadOnlyReactiveProperty<T> DataAsObservable()
+            {
+                dataReactiveProperty ??= new ReactiveProperty<T>(data);
+                return dataReactiveProperty;
             }
         }
-
-        public ReadOnlyReactiveProperty<int> PlayerBulletFirePointLevelAsObservable()
-        {
-            playerBulletFirePointLevelReactiveProperty ??= new ReactiveProperty<int>(playerBulletFirePointLevel);
-            return playerBulletFirePointLevelReactiveProperty;
-        }
+        
+        [Serializable]
+        public sealed class IntInstanceData : InstanceData<int> { }
     }
 }

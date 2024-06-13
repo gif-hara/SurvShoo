@@ -11,9 +11,7 @@ namespace SurvShoo
     public sealed class ActorBulletFireController
     {
         public bool CanFire { get; set; }
-        
-        private float currentCooldownTime = 0.0f;
-        
+
         public ActorBulletFireController(
             Actor actor,
             ActorSpawner bulletSpawner,
@@ -21,7 +19,7 @@ namespace SurvShoo
             Func<string> firePointIdProvider
         )
         {
-            currentCooldownTime = 0.0f;
+            var currentCooldownTime = 0.0f;
             actor.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
