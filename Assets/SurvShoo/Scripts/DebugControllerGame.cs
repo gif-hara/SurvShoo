@@ -46,6 +46,11 @@ namespace SurvShoo
                         gameInstanceData.AddPlayerBulletFirePointLevel(-1);
                         Debug.Log($"PlayerBulletFirePointLevel: {gameInstanceData.PlayerBulletFirePointLevel.Data}");
                     }
+                    if (Keyboard.current.digit7Key.wasPressedThisFrame)
+                    {
+                        gameInstanceData.OptionLevels[0].Data++;
+                        Debug.Log($"OptionLevel0: {gameInstanceData.OptionLevels[0].Data}");
+                    }
                 })
                 .RegisterTo(scope);
         }
