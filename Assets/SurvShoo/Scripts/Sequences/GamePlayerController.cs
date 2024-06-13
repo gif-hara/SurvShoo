@@ -20,25 +20,19 @@ namespace SurvShoo
             var inputController = TinyServiceLocator.Resolve<InputController>();
             var gameDesignData = TinyServiceLocator.Resolve<GameDesignData>();
             var gameInstanceData = TinyServiceLocator.Resolve<GameInstanceData>();
-            var coolDownSeconds = gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel);
+            var bulletFireController = new ActorBulletFireController(
+                actor,
+                gameDesignData.PlayerData.BulletSpawner,
+                () => gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel),
+                () => $"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel}"
+            );
             actor.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
                     var velocity = inputController.InputActions.Game.Move.ReadValue<Vector2>();
                     var moveSpeed = gameDesignData.PlayerData.GetMoveSpeedRate(gameInstanceData.PlayerMoveSpeedLevel, inputController.InputActions.Game.SlowMode.IsPress());
                     actor.transform.localPosition += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime * moveSpeed;
-                    coolDownSeconds -= Time.deltaTime;
-
-                    if (coolDownSeconds <= 0.0f && inputController.InputActions.Game.Fire.IsPress())
-                    {
-                        var firePointParent = actor.LocatorHolder.Get($"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel}");
-                        for(var i=0; i<firePointParent.childCount; i++)
-                        {
-                            var firePoint = firePointParent.GetChild(i);
-                            gameDesignData.PlayerData.BulletSpawner.Spawn(firePoint.position, firePoint.rotation);
-                        }
-                        coolDownSeconds = gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel);
-                    }
+                    bulletFireController.CanFire = inputController.InputActions.Game.Fire.IsPress();
                 })
                 .RegisterTo(actor.poolCancellationToken);
             return UniTask.CompletedTask;

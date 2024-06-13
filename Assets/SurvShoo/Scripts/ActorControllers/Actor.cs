@@ -22,7 +22,7 @@ namespace SurvShoo
         private CancellationTokenSource poolCancellationTokenSource;
 
         private Actor originalPrefab;
-
+        
         public CancellationToken poolCancellationToken
         {
             get
