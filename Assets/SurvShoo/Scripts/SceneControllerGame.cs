@@ -29,6 +29,9 @@ namespace SurvShoo
             TinyServiceLocator.Register(gameInstanceData);
             TinyServiceLocator.Register(gameDesignData);
             TinyServiceLocator.Register(new ActorPool());
+#if DEBUG
+            DebugControllerGame.Begin(this.destroyCancellationToken);
+#endif
             gameDesignData.PlayerData.ActorSpawner.Spawn(playerSpawnPoint.position, playerSpawnPoint.rotation);
 
             if (debugEnemySpawner != null && debugEnemySpawnerPoint != null)
