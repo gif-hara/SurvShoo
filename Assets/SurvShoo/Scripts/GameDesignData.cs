@@ -73,9 +73,11 @@ namespace SurvShoo
         {
             [SerializeField]
             private ActorSpawner actorSpawner;
+            public ActorSpawner ActorSpawner => actorSpawner;
 
             [SerializeField]
             private ActorSpawner bulletSpawner;
+            public ActorSpawner BulletSpawner => bulletSpawner;
         }
 
         [Serializable]
