@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
@@ -14,15 +15,19 @@ namespace SurvShoo
         [SerializeField]
         private IntInstanceData playerMoveSpeedLevel;
         public IntInstanceData PlayerMoveSpeedLevel => playerMoveSpeedLevel;
-        
+
         [SerializeField]
         private IntInstanceData playerFireCooldownLevel;
         public IntInstanceData PlayerFireCooldownLevel => playerFireCooldownLevel;
-        
+
         [SerializeField]
         private IntInstanceData playerBulletFirePointLevel;
         public IntInstanceData PlayerBulletFirePointLevel => playerBulletFirePointLevel;
-        
+
+        [SerializeField]
+        private List<IntInstanceData> optionLevels;
+        public List<IntInstanceData> OptionLevels => optionLevels;
+
         public void AddPlayerMoveSpeedLevel(int value)
         {
             playerMoveSpeedLevel.Data = Mathf.Clamp(
@@ -31,7 +36,7 @@ namespace SurvShoo
                 TinyServiceLocator.Resolve<GameDesignData>().PlayerData.MoveSpeedLevelMax
                 );
         }
-        
+
         public void AddPlayerFireCooldownLevel(int value)
         {
             playerFireCooldownLevel.Data = Mathf.Clamp(
@@ -40,7 +45,7 @@ namespace SurvShoo
                 TinyServiceLocator.Resolve<GameDesignData>().PlayerData.FireCooldownLevelMax
                 );
         }
-        
+
         public void AddPlayerBulletFirePointLevel(int value)
         {
             playerBulletFirePointLevel.Data = Mathf.Clamp(
@@ -49,13 +54,13 @@ namespace SurvShoo
                 TinyServiceLocator.Resolve<GameDesignData>().PlayerData.BulletFirePointLevelMax
                 );
         }
-        
+
         [Serializable]
         public abstract class InstanceData<T>
         {
             [SerializeField]
             private T data;
-        
+
             private ReactiveProperty<T> dataReactiveProperty;
 
             public T Data
@@ -75,7 +80,7 @@ namespace SurvShoo
                 return dataReactiveProperty;
             }
         }
-        
+
         [Serializable]
         public sealed class IntInstanceData : InstanceData<int> { }
     }
