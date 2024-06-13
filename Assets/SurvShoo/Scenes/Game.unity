@@ -156,6 +156,8 @@ MonoBehaviour:
       data: 0
     playerBulletFirePointLevel:
       data: 0
+    optionLevels:
+    - data: 0
   playerSpawnPoint: {fileID: 2104975421}
   debugEnemySpawner: {fileID: 11400000, guid: b28b53cdebc8a084495b7cc1736cf75a, type: 2}
   debugEnemySpawnerPoint: {fileID: 1357773818}
