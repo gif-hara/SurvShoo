@@ -44,6 +44,7 @@ namespace SurvShoo
             var t = result.transform;
             t.position = position;
             t.rotation = rotation;
+            TinyServiceLocator.Resolve<ActorManager>().Add(result);
             result.originalPrefab = this;
             result.Events.OnPoolRent.OnNext(Unit.Default);
             return result;

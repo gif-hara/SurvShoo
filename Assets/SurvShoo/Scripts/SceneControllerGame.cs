@@ -30,6 +30,7 @@ namespace SurvShoo
             TinyServiceLocator.Register(gameInstanceData);
             TinyServiceLocator.Register(gameDesignData);
             TinyServiceLocator.Register(new ActorPool());
+            TinyServiceLocator.Register(new ActorManager());
 #if DEBUG
             DebugControllerGame.Begin(this.destroyCancellationToken);
 #endif
