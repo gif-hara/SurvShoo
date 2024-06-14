@@ -24,6 +24,7 @@ namespace SurvShoo
 
         async void Start()
         {
+            Application.targetFrameRate = 60;
             await BootSystem.IsReady;
             TinyServiceLocator.Resolve<InputController>().InputActions.Enable();
             TinyServiceLocator.Register(gameInstanceData);

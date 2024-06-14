@@ -1,4 +1,5 @@
 using System.Threading;
+using R3;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -37,12 +38,14 @@ namespace SurvShoo
         {
             var result = TinyServiceLocator.Resolve<ActorPool>().Rent(this);
             result.originalPrefab = this;
+            result.Events.OnPoolRent.OnNext(Unit.Default);
             return result;
         }
 
         public void ReturnToPool()
         {
             Assert.IsNotNull(originalPrefab);
+            Events.OnPoolReturn.OnNext(Unit.Default);
             TinyServiceLocator.Resolve<ActorPool>().Return(originalPrefab, this);
         }
 
