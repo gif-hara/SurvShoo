@@ -38,6 +38,12 @@ MonoBehaviour:
       Min: 0.08333334
       Max: 0.03333334
     fireCooldownLevelMax: 4
+  - actorSpawner: {fileID: 11400000, guid: e46f6130afa1c4b6393e35177bbb7c0c, type: 2}
+    bulletSpawner: {fileID: 11400000, guid: 9e8e924d491ac43dbab20310d1419d8a, type: 2}
+    fireCooldown:
+      Min: 0.08333334
+      Max: 0.03333334
+    fireCooldownLevelMax: 4
   bulletData:
     list:
     - id: Player.0

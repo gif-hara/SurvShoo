@@ -159,6 +159,7 @@ MonoBehaviour:
     optionLevels:
     - data: 0
     - data: 0
+    - data: 0
     optionCooldownLevel:
       data: 0
   playerSpawnPoint: {fileID: 2104975421}
