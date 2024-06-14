@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using R3;
@@ -21,24 +22,31 @@ namespace SurvShoo
             var inputController = TinyServiceLocator.Resolve<InputController>();
             var gameDesignData = TinyServiceLocator.Resolve<GameDesignData>();
             var gameInstanceData = TinyServiceLocator.Resolve<GameInstanceData>();
-            var bulletFireController = new ActorBulletFireController(
+            var currentOptionLevels = gameDesignData.OptionDataList.Select(_ => 0).ToList();
+            ActorBulletFireController.Attach(
                 actor,
                 gameDesignData.PlayerData.BulletSpawner,
                 () => gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel.Data),
-                () => $"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel.Data}"
+                () => actor.LocatorHolder.Get($"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel.Data}")
             );
-            var currentOptionLevels = new List<int>();
-            foreach (var _ in gameDesignData.OptionDataList)
-            {
-                currentOptionLevels.Add(0);
-            }
             actor.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
                     var velocity = inputController.InputActions.Game.Move.ReadValue<Vector2>();
                     var moveSpeed = gameDesignData.PlayerData.GetMoveSpeedRate(gameInstanceData.PlayerMoveSpeedLevel.Data, inputController.InputActions.Game.SlowMode.IsPress());
                     actor.transform.localPosition += new Vector3(velocity.x, velocity.y, 0) * Time.deltaTime * moveSpeed;
-                    bulletFireController.CanFire = inputController.InputActions.Game.Fire.IsPress();
+                })
+                .RegisterTo(actor.poolCancellationToken);
+            inputController.InputActions.Game.Fire.PerformedAsObservable()
+                .Subscribe(_ =>
+                {
+                    actor.Events.CanFire.Value = true;
+                })
+                .RegisterTo(actor.poolCancellationToken);
+            inputController.InputActions.Game.Fire.CanceledAsObservable()
+                .Subscribe(_ =>
+                {
+                    actor.Events.CanFire.Value = false;
                 })
                 .RegisterTo(actor.poolCancellationToken);
             for (var i = 0; i < gameInstanceData.OptionLevels.Count; i++)

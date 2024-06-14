@@ -13,6 +13,8 @@ namespace SurvShoo
         private ActorLocatorHolder locatorHolder;
         public ActorLocatorHolder LocatorHolder => locatorHolder;
 
+        public ActorEvents Events { get; } = new();
+
         [SerializeField]
         private int hitPoint;
 

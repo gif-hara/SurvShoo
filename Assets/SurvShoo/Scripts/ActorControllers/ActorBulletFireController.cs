@@ -10,13 +10,11 @@ namespace SurvShoo
     /// </summary>
     public sealed class ActorBulletFireController
     {
-        public bool CanFire { get; set; }
-
-        public ActorBulletFireController(
+        public static void Attach(
             Actor actor,
             ActorSpawner bulletSpawner,
             Func<float> cooldownTimeProvider,
-            Func<string> firePointIdProvider
+            Func<Transform> firePointProvider
         )
         {
             var currentCooldownTime = 0.0f;
@@ -24,9 +22,9 @@ namespace SurvShoo
                 .Subscribe(_ =>
                 {
                     currentCooldownTime -= Time.deltaTime;
-                    if (currentCooldownTime <= 0.0f && CanFire)
+                    if (currentCooldownTime <= 0.0f && actor.Events.CanFire.Value)
                     {
-                        var firePointParent = actor.LocatorHolder.Get(firePointIdProvider());
+                        var firePointParent = firePointProvider();
                         for (var i = 0; i < firePointParent.childCount; i++)
                         {
                             var firePoint = firePointParent.GetChild(i);
