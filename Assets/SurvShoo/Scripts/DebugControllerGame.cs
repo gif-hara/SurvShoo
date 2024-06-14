@@ -51,6 +51,11 @@ namespace SurvShoo
                         gameInstanceData.OptionLevels[0].Data++;
                         Debug.Log($"OptionLevel0: {gameInstanceData.OptionLevels[0].Data}");
                     }
+                    if (Keyboard.current.digit8Key.wasPressedThisFrame)
+                    {
+                        gameInstanceData.OptionLevels[1].Data++;
+                        Debug.Log($"OptionLevel1: {gameInstanceData.OptionLevels[1].Data}");
+                    }
                 })
                 .RegisterTo(scope);
         }
