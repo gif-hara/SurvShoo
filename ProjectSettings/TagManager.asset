@@ -15,7 +15,7 @@ TagManager:
   - Actor/Player/Bullet
   - Actor/Enemy
   - Actor/Enemy/Bullet
-  - 
+  - Actor/Option/EnemySensor
   - 
   - 
   - 

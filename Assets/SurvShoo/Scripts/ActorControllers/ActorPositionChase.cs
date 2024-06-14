@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SurvShoo
 {
     /// <summary>
-    /// 
+    /// 指定した<see cref="Actor"/>の座標を追尾するコンポーネント
     /// </summary>
     public sealed class ActorPositionChase : MonoBehaviour
     {
