@@ -341,7 +341,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 4853317107756426016}
   targetActorType: 1
-  defaultPosition: {x: 0, y: 2, z: 0}
+  defaultPositionOffset: {x: 0, y: 2, z: 0}
+  targetPositionOffset: {x: 0, y: -2, z: 0}
   smoothTime: 0.05
   maxSpeed: 30
 --- !u!1 &849294268718042359

@@ -22,6 +22,10 @@ namespace SurvShoo
 
         [SerializeField]
         private int hitPoint;
+        
+        [SerializeField]
+        private float radius;
+        public float Radius => radius;
 
         private int currentHitPoint;
         

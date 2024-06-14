@@ -17,7 +17,10 @@ namespace SurvShoo
         private Define.ActorType targetActorType;
 
         [SerializeField]
-        private Vector3 defaultPosition;
+        private Vector3 defaultPositionOffset;
+        
+        [SerializeField]
+        private Vector3 targetPositionOffset;
 
         [SerializeField]
         private float smoothTime;
@@ -45,18 +48,16 @@ namespace SurvShoo
                     actor.UpdateAsObservable()
                         .Subscribe(__ =>
                         {
-                            var toPosition = actor.transform.position + defaultPosition;
+                            var toPosition = actor.transform.position + defaultPositionOffset;
+                            while (targets.Count > 0 && !targets.Peek().isActiveAndEnabled)
+                            {
+                                targets.Dequeue();
+                            }
+
                             if (targets.Count > 0)
                             {
-                                while (targets.Count > 0 && !targets.Peek().isActiveAndEnabled)
-                                {
-                                    targets.Dequeue();
-                                }
-
-                                if (targets.Count > 0)
-                                {
-                                    toPosition = targets.Peek().transform.position;
-                                }
+                                var target = targets.Peek();
+                                toPosition = target.transform.position + targetPositionOffset + Vector3.down * target.Radius;
                             }
                             transform.position = Vector3.SmoothDamp(
                                 transform.position,
