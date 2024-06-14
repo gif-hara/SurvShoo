@@ -11,6 +11,10 @@ namespace SurvShoo
     public sealed class Actor : MonoBehaviour
     {
         [SerializeField]
+        private Define.ActorType actorType;
+        public Define.ActorType ActorType => actorType;
+        
+        [SerializeField]
         private ActorLocatorHolder locatorHolder;
         public ActorLocatorHolder LocatorHolder => locatorHolder;
 
