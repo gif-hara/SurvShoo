@@ -27,6 +27,10 @@ namespace SurvShoo
         [SerializeField]
         private List<IntInstanceData> optionLevels;
         public List<IntInstanceData> OptionLevels => optionLevels;
+        
+        [SerializeField]
+        private IntInstanceData optionCooldownLevel;
+        public IntInstanceData OptionCooldownLevel => optionCooldownLevel;
 
         public void AddPlayerMoveSpeedLevel(int value)
         {

@@ -21,13 +21,17 @@ MonoBehaviour:
     moveSpeedLevelMax: 10
     bulletSpawner: {fileID: 11400000, guid: 50fda6023813c2b40a0214da921aad01, type: 2}
     fireCooldown:
-      Min: 0.083333336
-      Max: 0.033333335
+      Min: 0.08333334
+      Max: 0.03333334
     fireCooldownLevelMax: 4
     bulletFirePointLevelMax: 4
   optionDataList:
   - actorSpawner: {fileID: 11400000, guid: 862b23596fc2c7f4ca0acb504b5f838b, type: 2}
-    bulletSpawner: {fileID: 0}
+    bulletSpawner: {fileID: 11400000, guid: ee010fcca333f4703ad4a3b2824a8783, type: 2}
+    fireCooldown:
+      Min: 0.08333334
+      Max: 0.03333334
+    fireCooldownLevelMax: 4
   bulletData:
     list:
     - id: Player.0

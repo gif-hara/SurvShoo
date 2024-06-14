@@ -27,7 +27,8 @@ namespace SurvShoo
                 actor,
                 gameDesignData.PlayerData.BulletSpawner,
                 () => gameDesignData.PlayerData.GetFireCooldown(gameInstanceData.PlayerFireCooldownLevel.Data),
-                () => actor.LocatorHolder.Get($"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel.Data}")
+                () => actor.LocatorHolder.Get($"BulletFirePointParent.{gameInstanceData.PlayerBulletFirePointLevel.Data}"),
+                actor.poolCancellationToken
             );
             actor.UpdateAsObservable()
                 .Subscribe(_ =>
@@ -71,6 +72,13 @@ namespace SurvShoo
                                 var p = parent.GetChild(j);
                                 var optionActor = optionGameDesignData.ActorSpawner.Spawn(p.position, p.rotation);
                                 optionActor.transform.SetParent(p);
+                                ActorBulletFireController.Attach(
+                                    actor,
+                                    optionGameDesignData.BulletSpawner,
+                                    () => optionGameDesignData.GetFireCooldown(gameInstanceData.OptionCooldownLevel.Data),
+                                    () => optionActor.LocatorHolder.Get($"BulletFirePointParent"),
+                                    optionActor.poolCancellationToken
+                                );
                             }
                         }
                         currentOptionLevels[index] = x;

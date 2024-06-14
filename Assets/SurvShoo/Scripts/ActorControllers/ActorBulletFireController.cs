@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using R3;
 using R3.Triggers;
 using UnityEngine;
@@ -14,7 +15,8 @@ namespace SurvShoo
             Actor actor,
             ActorSpawner bulletSpawner,
             Func<float> cooldownTimeProvider,
-            Func<Transform> firePointProvider
+            Func<Transform> firePointProvider,
+            CancellationToken scope
         )
         {
             var currentCooldownTime = 0.0f;
@@ -34,7 +36,7 @@ namespace SurvShoo
                         currentCooldownTime = cooldownTimeProvider();
                     }
                 })
-                .RegisterTo(actor.poolCancellationToken);
+                .RegisterTo(scope);
         }
     }
 }
