@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7bd04464d242d243ac81bbad52035d5, type: 3}
-  m_Name: ActorSpawner.OptionBullet
+  m_Name: ActorSpawner.OptionBullet.0
   m_EditorClassIdentifier: 
   actorPrefab: {fileID: 4853317107756426016, guid: be9769a658d0db54589195869029169c, type: 3}
   onEnterSequences: {fileID: 11400000, guid: 617d648aa75fe4bf2bbedcf634923782, type: 2}
