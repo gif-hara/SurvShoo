@@ -20,10 +20,11 @@ namespace SurvShoo
 
         void Awake()
         {
+            var cachedParent = transform.parent;
             actor.Events.OnPoolRent
                 .Subscribe(_ =>
                 {
-                    positions.Clear();
+                    transform.SetParent(null);
                     positions.Add(actor.transform.position);
                     actor.UpdateAsObservable()
                         .Subscribe(__ =>
@@ -41,6 +42,13 @@ namespace SurvShoo
                             }
                         })
                         .RegisterTo(actor.poolCancellationToken);
+                })
+                .RegisterTo(this.destroyCancellationToken);
+            actor.Events.OnPoolReturn
+                .Subscribe(_ =>
+                {
+                    transform.SetParent(cachedParent);
+                    positions.Clear();
                 })
                 .RegisterTo(this.destroyCancellationToken);
         }

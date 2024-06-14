@@ -34,9 +34,12 @@ namespace SurvShoo
             }
         }
 
-        public Actor RentToPool()
+        public Actor RentToPool(Vector3 position, Quaternion rotation)
         {
             var result = TinyServiceLocator.Resolve<ActorPool>().Rent(this);
+            var t = result.transform;
+            t.position = position;
+            t.rotation = rotation;
             result.originalPrefab = this;
             result.Events.OnPoolRent.OnNext(Unit.Default);
             return result;

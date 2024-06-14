@@ -18,10 +18,7 @@ namespace SurvShoo
 
         public Actor Spawn(Vector3 position, Quaternion rotation)
         {
-            var actor = actorPrefab.RentToPool();
-            var t = actor.transform;
-            t.position = position;
-            t.rotation = rotation;
+            var actor = actorPrefab.RentToPool(position, rotation);
             var container = new Container();
             container.Register("Owner", actor);
             container.Register("Owner", actor.transform);
