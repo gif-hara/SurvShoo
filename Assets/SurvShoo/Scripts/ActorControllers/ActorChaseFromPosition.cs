@@ -16,10 +16,9 @@ namespace SurvShoo
         [SerializeField]
         private int waitCount;
 
-        private List<Vector3> positions = new();
-
         void Awake()
         {
+            var positions = new List<Vector3>();
             actor.Events.OnPoolRent
                 .Subscribe(_ =>
                 {
