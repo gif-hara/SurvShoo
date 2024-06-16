@@ -8,14 +8,14 @@ namespace SurvShoo
     /// <summary>
     /// 指定した<see cref="Actor"/>の座標を追尾するコンポーネント
     /// </summary>
-    public sealed class ActorPositionChase : MonoBehaviour
+    public sealed class ActorChaseFromPosition : MonoBehaviour
     {
         [SerializeField]
         private Actor actor;
 
         [SerializeField]
         private int waitCount;
-        
+
         private List<Vector3> positions = new();
 
         void Awake()
@@ -29,7 +29,7 @@ namespace SurvShoo
                         {
                             var prevPosition = positions[^1];
                             var nextPosition = actor.transform.position;
-                            if(prevPosition != nextPosition)
+                            if (prevPosition != nextPosition)
                             {
                                 positions.Add(nextPosition);
                                 transform.position = positions[0];
