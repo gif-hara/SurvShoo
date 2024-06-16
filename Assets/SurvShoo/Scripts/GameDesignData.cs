@@ -78,13 +78,17 @@ namespace SurvShoo
             [SerializeField]
             private ActorSpawner bulletSpawner;
             public ActorSpawner BulletSpawner => bulletSpawner;
-            
+
             [SerializeField]
             private MinMaxValue fireCooldown;
-            
+
             [SerializeField]
             private int fireCooldownLevelMax;
-            
+
+            [SerializeField]
+            private int levelMax;
+            public int LevelMax => levelMax;
+
             public float GetFireCooldown(int level)
             {
                 var rate = (float)level / fireCooldownLevelMax;

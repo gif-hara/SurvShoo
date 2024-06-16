@@ -48,17 +48,17 @@ namespace SurvShoo
                     }
                     if (Keyboard.current.digit7Key.wasPressedThisFrame)
                     {
-                        gameInstanceData.OptionLevels[0].Data++;
+                        gameInstanceData.AddOptionLevel(0, 1);
                         Debug.Log($"OptionLevel0: {gameInstanceData.OptionLevels[0].Data}");
                     }
                     if (Keyboard.current.digit8Key.wasPressedThisFrame)
                     {
-                        gameInstanceData.OptionLevels[1].Data++;
+                        gameInstanceData.AddOptionLevel(1, 1);
                         Debug.Log($"OptionLevel1: {gameInstanceData.OptionLevels[1].Data}");
                     }
                     if (Keyboard.current.digit9Key.wasPressedThisFrame)
                     {
-                        gameInstanceData.OptionLevels[2].Data++;
+                        gameInstanceData.AddOptionLevel(2, 1);
                         Debug.Log($"OptionLevel2: {gameInstanceData.OptionLevels[2].Data}");
                     }
                 })

@@ -27,7 +27,7 @@ namespace SurvShoo
         [SerializeField]
         private List<IntInstanceData> optionLevels;
         public List<IntInstanceData> OptionLevels => optionLevels;
-        
+
         [SerializeField]
         private IntInstanceData optionCooldownLevel;
         public IntInstanceData OptionCooldownLevel => optionCooldownLevel;
@@ -56,6 +56,15 @@ namespace SurvShoo
                 playerBulletFirePointLevel.Data + value,
                 0,
                 TinyServiceLocator.Resolve<GameDesignData>().PlayerData.BulletFirePointLevelMax
+                );
+        }
+
+        public void AddOptionLevel(int index, int value)
+        {
+            optionLevels[index].Data = Mathf.Clamp(
+                optionLevels[index].Data + value,
+                0,
+                TinyServiceLocator.Resolve<GameDesignData>().OptionDataList[index].LevelMax
                 );
         }
 
