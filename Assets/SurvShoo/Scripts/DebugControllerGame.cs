@@ -1,5 +1,6 @@
 using System.Threading;
 using R3;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,26 +49,32 @@ namespace SurvShoo
                     }
                     if (Keyboard.current.digit7Key.wasPressedThisFrame)
                     {
-                        gameInstanceData.AddOptionLevel(0, 1);
-                        Debug.Log($"OptionLevel0: {gameInstanceData.OptionLevels[0].Data}");
+                        AddOptionLevel(0, 1);
                     }
                     if (Keyboard.current.digit8Key.wasPressedThisFrame)
                     {
-                        gameInstanceData.AddOptionLevel(1, 1);
-                        Debug.Log($"OptionLevel1: {gameInstanceData.OptionLevels[1].Data}");
+                        AddOptionLevel(1, 1);
                     }
                     if (Keyboard.current.digit9Key.wasPressedThisFrame)
                     {
-                        gameInstanceData.AddOptionLevel(2, 1);
-                        Debug.Log($"OptionLevel2: {gameInstanceData.OptionLevels[2].Data}");
+                        AddOptionLevel(2, 1);
                     }
                     if (Keyboard.current.digit0Key.wasPressedThisFrame)
                     {
-                        gameInstanceData.AddOptionLevel(3, 1);
-                        Debug.Log($"OptionLevel3: {gameInstanceData.OptionLevels[3].Data}");
+                        AddOptionLevel(3, 1);
+                    }
+                    if (Keyboard.current.qKey.wasPressedThisFrame)
+                    {
+                        AddOptionLevel(4, 1);
                     }
                 })
                 .RegisterTo(scope);
+
+            void AddOptionLevel(int index, int value)
+            {
+                gameInstanceData.AddOptionLevel(index, value);
+                Debug.Log($"OptionLevel{index}: {gameInstanceData.OptionLevels[index].Data}");
+            }
         }
     }
 }

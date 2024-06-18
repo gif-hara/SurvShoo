@@ -4401,7 +4401,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
       propertyPath: elements.Array.size
-      value: 26
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
       propertyPath: transformLists.Array.size
@@ -4510,6 +4510,26 @@ PrefabInstance:
     - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
       propertyPath: elements.Array.data[25].key
       value: OptionPoint.3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[26].key
+      value: OptionPoint.4.0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[27].key
+      value: OptionPoint.4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[28].key
+      value: OptionPoint.4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[29].key
+      value: OptionPoint.4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[30].key
+      value: OptionPoint.4.4
       objectReference: {fileID: 0}
     - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
       propertyPath: 'bulletFirePoints.Array.data[0]'
@@ -4631,6 +4651,26 @@ PrefabInstance:
       propertyPath: elements.Array.data[25].locator
       value: 
       objectReference: {fileID: 8183213042984433708}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[26].locator
+      value: 
+      objectReference: {fileID: 5014697617690348981}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[27].locator
+      value: 
+      objectReference: {fileID: 4707571450101223301}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[28].locator
+      value: 
+      objectReference: {fileID: 8501138484305830940}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[29].locator
+      value: 
+      objectReference: {fileID: 7302364482802012760}
+    - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
+      propertyPath: elements.Array.data[30].locator
+      value: 
+      objectReference: {fileID: 1353537205336303652}
     - target: {fileID: -4806832295647805406, guid: bdb5dcf853ecf7547a7cee21a6cdd500, type: 3}
       propertyPath: transformLists.Array.data[0].key
       value: FirePointParents
