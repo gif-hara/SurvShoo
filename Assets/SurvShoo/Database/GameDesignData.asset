@@ -61,6 +61,20 @@ MonoBehaviour:
       Max: 0.03333334
     fireCooldownLevelMax: 4
     levelMax: 4
+  - actorSpawner: {fileID: 11400000, guid: cdaa71d9871525547a504996c577d4f3, type: 2}
+    bulletSpawner: {fileID: 11400000, guid: 8dbd4b0fd11af2b48853c05e61525292, type: 2}
+    fireCooldown:
+      Min: 0.08333334
+      Max: 0.03333334
+    fireCooldownLevelMax: 4
+    levelMax: 4
+  - actorSpawner: {fileID: 11400000, guid: 2c06b305e02400346ac2210e19203199, type: 2}
+    bulletSpawner: {fileID: 11400000, guid: e27ab7acc26ac954c8bc3d5ec74dffc7, type: 2}
+    fireCooldown:
+      Min: 0.08333334
+      Max: 0.03333334
+    fireCooldownLevelMax: 4
+    levelMax: 4
   bulletData:
     list:
     - id: Player.0

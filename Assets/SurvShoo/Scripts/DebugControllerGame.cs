@@ -67,6 +67,14 @@ namespace SurvShoo
                     {
                         AddOptionLevel(4, 1);
                     }
+                    if (Keyboard.current.wKey.wasPressedThisFrame)
+                    {
+                        AddOptionLevel(5, 1);
+                    }
+                    if (Keyboard.current.eKey.wasPressedThisFrame)
+                    {
+                        AddOptionLevel(6, 1);
+                    }
                 })
                 .RegisterTo(scope);
 
